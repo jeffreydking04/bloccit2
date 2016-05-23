@@ -4,7 +4,6 @@ module RandomData
     rand(4..6).times do 
       sentences << random_sentence
     end
-    
     sentences.join(" ")
   end
   
@@ -13,7 +12,6 @@ module RandomData
     rand(3..8).times do
       strings << random_word
     end
-
     sentence = strings.join(" ")
     sentence.capitalize << "."
   end
