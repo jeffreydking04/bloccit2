@@ -1,0 +1,21 @@
+<h1>Edit Sponsored Post</h1>
+
+<div class="row">
+  <%= form_for [@sponsored_post.topic, @sponsored_post] do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Enter Title Here" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control', placeholder: "Enter Body Here" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+</div>
