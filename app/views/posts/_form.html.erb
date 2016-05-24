@@ -9,15 +9,15 @@
       </ul>
     </div>
   <% end %>
-    <%= form_group_tag(post.errors[:title]) do %>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "Enter Post Title" %>
-    <% end %>
-    <%= form_group_tag(post.errors[:body]) do %>
-      <%= f.label :body %>
-      <%= f.text_area :body, class: 'form-control', placeholder: "Enter Post Body" %>
-    <% end %>
-    <div class="form-group">
-      <%= f.submit "Save" %>
-    </div>
+  <%= form_group_tag(post.errors[:title]) do %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Enter Post Title" %>
+  <% end %>
+  <%= form_group_tag(post.errors[:body]) do %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', placeholder: "Enter Post Body" %>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit "Save" %>
+  </div>
 <% end %>
