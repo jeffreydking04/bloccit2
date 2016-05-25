@@ -20,7 +20,6 @@
             <%= current_user.name %><br>
             <%= link_to "Sign Out", session_path(current_user), method: :delete %>
           </div>
-          <%= image_tag avatar_url(current_user), class: :avatar %>
         <% else %>
           <%= link_to "Sign In", new_session_path %> or
           <%= link_to "Sign Up", new_user_path %>
