@@ -32,36 +32,6 @@ ActiveRecord::Schema.define(version: 20160524203833) do
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
 
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "resolved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sponsered_posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "price"
-    t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sponsered_posts", ["topic_id"], name: "index_sponsered_posts_on_topic_id"
-
-  create_table "sponsored_posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "price"
-    t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sponsored_posts", ["topic_id"], name: "index_sponsored_posts_on_topic_id"
-
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.boolean  "public",      default: true
