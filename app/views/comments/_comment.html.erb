@@ -3,7 +3,8 @@
     <small>
       <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
       <% if user_is_authorized_for_comment?(comment) %>
-        | <%= link_to "Delete", [@post, comment], method: :delete %>
+          <% @post ? owner = @post : owner = @topic %>
+        | <%= link_to "Delete", [owner, comment], method: :delete %>
       <% end %>
     </small>
     <p><%= comment.body %></p>
