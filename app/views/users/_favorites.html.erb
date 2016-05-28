@@ -1,0 +1,30 @@
+<% if current_user %>
+  <% user.favorites.each do |favorite| %>
+    <% if favorite.post.user != user %>
+      <div class="row">
+        <% avatar_url = favorite.post.user.avatar_url(65) %>
+        <% if avatar_url %>
+          <div class="col-md-1" id="avatar-by-favorites">
+            <%= image_tag avatar_url, class: 'media-object' %>
+          </div>
+        <% end %>
+        <div class="col-md-1">
+          <h5>
+            <%= pluralize(favorite.post.points, 'point') %><br>
+            <small>
+              <%= pluralize(favorite.post.up_votes, 'up_vote') %>,
+              <%= pluralize(favorite.post.down_votes, 'down_vote') %>
+            </small>
+          </h5>
+        </div>
+        <div class="col-md-10">
+          <h4><%= link_to favorite.post.title, topic_post_path(favorite.post.topic, favorite.post) %></h><br>
+          <small>
+            submitted <%= time_ago_in_words(favorite.post.created_at) %> ago by <%= favorite.post.user.name %> <br>
+            <%= favorite.post.comments.count %> Comments
+          </small>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

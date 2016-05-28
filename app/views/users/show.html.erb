@@ -18,15 +18,21 @@
     </div>
   </div>
 </div>
-<%= if @user.any_posts? %>
   <h2>Posts</h2>
+<% if @user.user_has_any_posts? %>
   <%= render @user.posts %>
 <% else %>
-  <h2><%= puts "#{@user.name}" %> has not submitted any posts yet.</h2>
+  <p><%= @user.name %> has not submitted any posts yet.</p>
 <% end %>
-<%= if @user.any_comments? %>
   <h2>Comments</h2>
+<% if @user.user_has_any_comments? %>
   <%= render @user.comments %>
 <% else %>
-  <h2><%= puts "#{@user.name}" %> has not submitted any comments yet.</h2>
+  <p><%= @user.name %> has not submitted any comments yet.</p>
+<% end %>
+  <h2>Favorites</h2>
+<% if @user.user_has_favorited_another_user_post? %>
+  <%= render partial: 'users/favorites', locals: { user: @user } %>
+<% else %>
+  <p><%= @user.name %> has not submitted any favorites yet.</p>
 <% end %>
