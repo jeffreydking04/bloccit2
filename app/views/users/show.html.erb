@@ -18,8 +18,15 @@
     </div>
   </div>
 </div>
-<h2>Posts</h2>
-<%= render @user.posts %>
-
-<h2>Comments</h2>
-<%= render @user.comments %>
+<%= if @user.any_posts? %>
+  <h2>Posts</h2>
+  <%= render @user.posts %>
+<% else %>
+  <h2><%= puts "#{@user.name}" %> has not submitted any posts yet.</h2>
+<% end %>
+<%= if @user.any_comments? %>
+  <h2>Comments</h2>
+  <%= render @user.comments %>
+<% else %>
+  <h2><%= puts "#{@user.name}" %> has not submitted any comments yet.</h2>
+<% end %>
