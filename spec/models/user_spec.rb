@@ -109,16 +109,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe ".user_has_favorited_another_user_post?" do
-    let(:other_user) { create(:user) }
-    let(:topic) { create(:topic) }
-
-    it "should return true when user has favorited other_user's post" do
-      other_user_post = other_user.posts.create(topic_id: topic.id, title: RandomData.random_sentence, body: RandomData.random_paragraph)
-      other_user_post.save!
-      user_favorite = user.favorites.create(id: other_user_post.id)
-      user_favorite.save!
-      expect(user.user_has_favorited_another_user_post?).to be_truthy
+  describe "#generate_auth_token" do
+    it "creates a token" do
+      expect(user.auth_token).to_not be_nil
     end
   end
 end
