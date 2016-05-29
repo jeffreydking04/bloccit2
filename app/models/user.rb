@@ -26,15 +26,15 @@ class User < ActiveRecord::Base
   end
 
   def  user_has_any_posts?
-    self.posts[0] != nil
+    self.posts[0]
   end
 
   def user_has_any_comments?
-    self.comments[0] != nil
+    self.comments[0]
   end
 
   def user_has_favorited_another_user_post?
-    if self.favorites[0] != nil
+    if self.favorites[0]
       self.favorites.each do |favorite|
         return true if favorite.post.user != self
       end
