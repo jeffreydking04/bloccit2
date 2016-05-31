@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
-  def  user_has_any_posts?
+  def user_has_any_posts?
     self.posts[0]
   end
 
@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
       self.favorites.each do |favorite|
         return true if favorite.post.user != self
       end
+    else
+      false
     end
+    false
   end
 end
