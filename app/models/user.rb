@@ -26,21 +26,14 @@ class User < ActiveRecord::Base
   end
 
   def user_has_any_posts?
-    self.posts[0]
+    self.posts.present?
   end
 
   def user_has_any_comments?
-    self.comments[0]
+    self.comments.present?
   end
 
-  def user_has_favorited_another_user_post?
-    if self.favorites[0]
-      self.favorites.each do |favorite|
-        return true if favorite.post.user != self
-      end
-    else
-      false
-    end
-    false
+  def user_has_any_favorites?
+    self.favorites.present?
   end
 end

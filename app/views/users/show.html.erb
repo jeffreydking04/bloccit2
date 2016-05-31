@@ -1,38 +1,42 @@
 <div class="row">
-  <div class="col-md-8">
-    <div class="media">
-      <br />
-      <% avatar_url = @user.avatar_url(128) %>
-      <% if avatar_url %>
-        <div class="media-left">
-          <%= image_tag avatar_url, class: 'media-object' %>
-        </div>
-      <% end %>
-      <div class="media-body">
-        <h2 class="media-heading"><%= @user.name %></h2>
-        <small>
-          <%= pluralize(@user.posts.count, 'post') %>,
-          <div class='js-comments-count'><%= pluralize(@user.comments.count, 'comment') %>
-        </small>
+  <div class="media">
+    <br />
+    <% avatar_url = @user.avatar_url(128) %>
+    <% if avatar_url %>
+      <div class="media-left">
+        <%= image_tag avatar_url, class: 'media-object' %>
       </div>
+    <% end %>
+    <div class="media-body">
+      <h2 class="media-heading"><%= @user.name %></h2>
+      <small>
+        <%= pluralize(@user.posts.count, 'post') %>,
+        <div class='js-comments-count'><%= pluralize(@user.comments.count, 'comment') %>
+      </small>
     </div>
   </div>
 </div>
-  <h2>Posts</h2>
-<% if @user.user_has_any_posts? %>
-  <%= render @user.posts %>
-<% else %>
-  <p><%= @user.name %> has not submitted any posts yet.</p>
-<% end %>
-  <h2>Comments</h2>
-<% if @user.user_has_any_comments? %>
-  <%= render @user.comments %>
-<% else %>
-  <p><%= @user.name %> has not submitted any comments yet.</p>
-<% end %>
-  <h2>Favorites</h2>
-<% if @user.user_has_favorited_another_user_post? %>
-  <%= render partial: 'users/favorites', locals: { user: @user } %>
-<% else %>
-  <p><%= @user.name %> has not submitted any favorites yet.</p>
-<% end %>
+<br>
+<br>
+<div class="row">
+  <div class="media">
+    <h2>Posts</h2>
+    <% if @user.user_has_any_posts? %>
+      <%= render @user.posts %>
+    <% else %>
+      <p><%= @user.name %> has not submitted any posts yet.</p>
+    <% end %>
+    <h2>Comments</h2>
+    <% if @user.user_has_any_comments? %>
+      <%= render @user.comments %>
+    <% else %>
+      <p><%= @user.name %> has not submitted any comments yet.</p>
+    <% end %>
+    <h2>Favorites</h2>
+    <% if @user.user_has_any_favorites? %>
+      <%= render partial: 'users/favorites', locals: { user: @user } %>
+    <% else %>
+      <p><%= @user.name %> has not submitted any favorites yet.</p>
+    <% end %>
+  </div>
+</div>
